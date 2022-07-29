@@ -55,3 +55,4 @@ hs_err_pid*
 /webapps/
 
 /logs/
+/memory/.mvn/
