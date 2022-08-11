@@ -1,12 +1,48 @@
 {
-// tsconfig.json 编译器的配置文件 根据配置来对代码进行编译
+  // tsconfig.json 编译器的配置文件 根据配置来对代码进行编译
   //一个*代表任意文件 两个**代表任意目录
-  //此行代表 src目录下任意子目录的任意文件
-  "include": ["./src/**/*"],//用来指定包含哪些目录的文件需要被编译
-  "exclude": [],//用来指定排除哪些目录的文件不需要被编译
-//  "extends": "",//定义被继承的文件
-//  "files": ["文件名"]// 文件少时可以使用此种方式 编译文件列表
-  "compilerOptions": { //编译选项
-
+  //用来指定包含哪些目录的文件需要被编译
+  "include": [
+    //此行代表 src目录下任意子目录的任意文件
+    "./src/**/*"
+  ],
+  //用来指定排除哪些目录的文件不需要被编译
+  "exclude": [],
+  //定义被继承的文件
+  //  "extends": "",
+  // 文件少时可以使用此种方式 编译文件列表
+  //  "files": ["文件名"]
+  //编译选项
+  "compilerOptions": {
+    //默认ES3  ESNext 代表最新版本  随便输入一个错值 编译器会提示有什么可选项
+    "target": "ES6",
+    //  可选值指定模块化标准  none commonjs amd system ymd es6 es2015 es2020 esnext
+    "module": "es6",
+    //项目中使用的依赖库  如果是在浏览器的环境运行 一般不需要这个配置
+    //    "lib": ["dom"],
+    //指定编译后文件所在的目录
+    "outDir": "./dist",
+    //代码合并为一个文件  module配置项需要是 amd 或者system
+    //    "outFile": "./dist/app.js",
+    //是否对js文件进行编译 默认false
+    "allowJs": true,
+    //是否检查js代码是否符合语法规范 默认false
+    "checkJs": true,
+    //是否移除注释默认false
+    "removeComments": false,
+    //不生成编译后的文件
+    "noEmit": false,
+    //当有错误时不生成编译后的文件
+    "noEmitOnError": true,
+    //设置编译后的文件是否是严格模式
+    "alwaysStrict": true,
+    //不允许隐式的any类型
+    "noImplicitAny": true,
+    //不允许不明确类型的this
+    "noImplicitThis": true,
+    //严格检查空值
+    "strictNullChecks": true,
+    //所有严格检查模式的总开关
+    "strict": true,
   }
 }

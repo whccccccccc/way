@@ -56,3 +56,5 @@ hs_err_pid*
 
 /logs/
 /memory/.mvn/
+/typescript/chapter01/part3/node_modules/
+/typescript/chapter01/part3/dist/
