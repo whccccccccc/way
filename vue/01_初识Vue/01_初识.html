@@ -7,7 +7,13 @@
 </head>
 <body>
 <div id="app">
-    <h1>Hello, {{name}}</h1>
+<!--    {{里面是js表达式}}-->
+    <h1>Hello, {{name.toUpperCase()}}, {{address}}, {{Date.now()}}</h1>
+<!--
+ 1.Vue实例和容器是一一对应的
+ 2.真实开发中只有一个Vue实例,并且会配合着组件一起使用
+ 3.以下为插值语法
+ -->
 </div>
 <script>
     Vue.config.productionTip = false //以阻止 vue 在启动时生成生产提示。
@@ -16,9 +22,13 @@
         // el:document.getElementById('app'),
         data() {
             return {
-                name: 'Vue'
+                name: 'Vue',
+                address: '北京'
             }
-        }
+        },
+        // data:{
+        //     name:'Vue'
+        // },
     });
 </script>
 </body>

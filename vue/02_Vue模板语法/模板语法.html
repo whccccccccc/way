@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+<!--
+
+模板语法两大类
+1. 插值语法
+  功能:用于解析标签内容
+  写法:{{xxx}} xxx 是js表达式 且可以直接读取到data中的所有属性
+2. 指令语法
+  功能:用于解析标签 包括 标签属性 标签体内容 绑定事件
+
+-->
+<div id="app">
+    <h1>插值语法</h1>
+    <h1>Hello {{name}}</h1>
+    <hr>
+    <h1>指令语法</h1>
+    <a v-bind:href="url">跳转链接</a>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            name: 'AAA',
+            url: 'http://www.baidu.com'
+        }
+    })
+</script>
+</body>
+</html>

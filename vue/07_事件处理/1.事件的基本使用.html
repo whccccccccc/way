@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h2>欢迎来到{{name}}学习</h2>
+    <button v-on:click="showInfo">点我提示信息</button>
+    <button @click="showInfo2($event,66)">点我提示信息</button>
+</div>
+<script>
+    Vue.config.productionTip = false;
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                name: 'aaa',
+            }
+        },
+        methods: {
+            showInfo(event) {
+                //默认传递event属性
+                console.log(event.target);//获取触发事件的对象
+                console.log(this)//此处的this 是vm
+            },
+            showInfo2(event, number) {
+                console.log(event.target);
+                console.log(number);
+            }
+        }
+    })
+</script>
+</body>
+</html>

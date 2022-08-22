@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+
+</head>
+<body>
+<div id="app">
+<!--    普通写法-->
+    单向数据绑定:
+    <input type="text" v-bind:value="name">
+    <br>
+    双向数据绑定:
+    <input type="text" v-model:value="name">
+    <br>
+<!--    简写-->
+    单向数据绑定:
+    <input type="text" :value="name">
+    <br>
+    双向数据绑定:
+    <input type="text" v-model="name">
+
+<!--
+1.v-model 只能应用在输入类元素上  有value属性的标签
+2.v-model:value 可以简写为v-model
+-->
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            name: '尚硅谷'
+        },
+    })
+</script>
+</body>
+</html>
