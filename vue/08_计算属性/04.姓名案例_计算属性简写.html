@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+<div id="app">
+    姓 <input type="text" v-model="firstName">
+    <br>
+    名: <input type="text" v-model="lastName">
+    <br>
+    全名: <span>{{fullName}}</span>
+</div>
+
+<script>
+    Vue.config.productionTip = false;
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                firstName: '张',
+                lastName: '三'
+            }
+        },
+        //更多的情况只读不修改
+        computed: {
+            // fullName: {
+            //     get() {
+            //         return `${this.firstName}-${this.lastName}`;
+            //     },
+            //     set(value) {
+            //         const arr = value.split('-')
+            //         this.firstName = arr[0]
+            //         this.lastName = arr[1]
+            //     }
+            // },
+            //简写方式  get
+            fullName() {
+                return `${this.firstName}-${this.lastName}`;
+            },
+
+        }
+    })
+
+</script>
+</body>
+</html>

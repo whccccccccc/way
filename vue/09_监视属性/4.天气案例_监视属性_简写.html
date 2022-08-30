@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h2>今天天气很{{info}}</h2>
+    <button @click="changeWeather">切换天气</button>
+</div>
+<script>
+    Vue.config.productionTip = false;
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                isHot: true,
+            }
+        },
+        computed: {
+            info() {
+                return this.isHot ? '炎热' : '凉爽'
+            }
+        },
+        methods: {
+            changeWeather() {
+                this.isHot = !this.isHot;
+            }
+        },
+        watch: {
+            //配置项中只有handler 就可以使用简写  如果有其他配置 那就不能用
+            //正常写法
+            // isHot: {
+            //     immediate: true,//初始化时让handler调用一下
+            //     deep: true,//深度监视
+            //     handler(newValue, oldValue) {
+            //         console.log('isHot被修改了')
+            //     }
+            // }
+            //简写
+            isHot(newValue, oldValue) {
+                console.log(`isHot从${oldValue}变为${newValue}`)
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+<div id="app">
+    姓 <input type="text" v-model="firstName">
+    <br>
+    名: <input type="text" v-model="lastName">
+    <br>
+    全名: <span>{{fullName}}</span>
+</div>
+<!--
+
+定义:要用的属性不存在,要通过已有属性计算得来
+
+计算属性就是拿已经写完的属性 去加工去计算 生成一个全新的属性
+计算属性有缓存 多次调用 只执行一次
+注:如果计算属性要修改 一定要通过set方法去修改  且set中要引起计算时以来的数据发生改变
+
+get 执行时间 : 初次读取 执行一次 ,依赖的数据发生改变 再次调用
+
+-->
+<script>
+    Vue.config.productionTip = false;
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                firstName: '张',
+                lastName: '三'
+            }
+        },
+        computed: {
+            fullName: {
+                get() {
+                    return `${this.firstName}-${this.lastName}`;
+                },
+                set(value) {
+                    const arr = value.split('-')
+                    this.firstName = arr[0]
+                    this.lastName = arr[1]
+                }
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

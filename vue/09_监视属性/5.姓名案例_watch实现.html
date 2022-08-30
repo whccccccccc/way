@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+<div id="app">
+    姓 <input type="text" v-model="firstName">
+    <br>
+    名: <input type="text" v-model="lastName">
+    <br>
+    全名: <span>{{fullName}}</span>
+</div>
+<!--
+
+computed和watch之间的区别
+1. computed能完成的功能,watch都可以完成
+2.watch可以完成的computed不一定能完成 例如watch异步操作
+两个重要的小原则:
+1.所呗Vue管理的函数最好写成普通函数,这样this的指向才是vm 或组件实例对象
+2.所有不被Vue所管理的函数(定时器的回调,ajax的回调函数等) 最好写成箭头函数,这样this的指向才是vm或组件实例对象
+
+
+-->
+
+<script>
+    Vue.config.productionTip = false;
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                firstName: '张',
+                lastName: '三',
+                fullName: '张-三'
+            }
+        },
+        //A改变值 需要B值更改  没有其他逻辑就用计算属性写
+        //A改变值 需要B值更改  延迟一秒修改B的值 需要额外逻辑 那就用watch写
+        watch: {
+            firstName(newValue, oldValue) {
+                //定时器写成箭头函数的形式 就可以获取到vm  不然获取到的是window对象
+
+                this.fullName = newValue + '-' + this.lastName
+            },
+            lastName(newValue, oldValue) {
+                this.fullName = this.firstName + '-' + newValue
+            },
+        }
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+<div id="app">
+
+<!--    如果页面没有用到某个变量 即使数据发生改变了 但是开发者工具中不会显示-->
+    <h2>今天天气很{{info}}</h2>
+<!--    <h2>今天天气很一般</h2>-->
+<!--   @xxx="yyy" yyy可以写一些简单的语句 -->
+    <button @click="changeWeather">切换天气</button>
+<!--    <button @click="isHot = !isHot">切换天气</button>-->
+</div>
+<script>
+    Vue.config.productionTip = false;
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                isHot: true
+            }
+        },
+        methods: {
+            changeWeather() {
+                this.isHot = !this.isHot;
+            }
+        },
+        computed: {
+            info() {
+                return this.isHot ? '炎热' : '凉爽'
+            }
+        }
+    })
+</script>
+</body>
+</html>
