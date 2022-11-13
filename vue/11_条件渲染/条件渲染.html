@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-Cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+<div id="app">
+
+
+<!--
+
+1.v-if
+    适用于切换频率较低的场景
+    特点:不展示的dom元素直接被移除
+    v-if else-if else 的结构不能被打断
+2.v-show
+    适用于:切换频率较高的场景
+    特点:不展示的DOM元素未被移除,仅仅是使用样式隐藏掉
+
+备注:使用v-if时 元素可能无法获取到,而使用v-show 一定可以获取到
+
+-->
+
+
+
+    <!--    <h2 v-show="true">欢迎来到{{name}}</h2>-->
+    <!--    <h2 v-show="1===1">欢迎来到{{name}}</h2>-->
+    <!--    使用v-if-->
+    <!--    <h2 v-if="false">欢迎来到{{name}}</h2>-->
+    <!--    <h2 v-if="1===1">欢迎来到{{name}}</h2>-->
+
+    <h2>当前n的值:{{n}}</h2>
+    <button @click="n++">点我n+1</button>
+    <!--    <div v-show="n==1">Angular</div>-->
+    <!--    <div v-show="n==2">React</div>-->
+    <!--    <div v-show="n==3">Vue</div>-->
+    下面的这种写法稍微省性能一点
+    <div v-if="n==1">Angular</div>
+    <!--    不允许打断这四个div 下面的这个标签不能出现-->
+    <!--    <div>@</div>-->
+    <div v-else-if="n==2">React</div>
+    <div v-else-if="n==3">Vue</div>
+    <div v-else>嘻嘻</div>
+
+
+    <!--    v-if与template的使用-->
+<!--    template标签不会被渲染 不会影响代码结构-->
+    <template v-if="n===1">
+        <h2>你好</h2>
+        <h2>尚硅谷</h2>
+        <h2>北京</h2>
+    </template>
+
+</div>
+<script>
+    Vue.config.productionTip = false;
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                n: 0,
+                name: '尚硅谷'
+            }
+        }
+    })
+</script>
+</body>
+</html>
